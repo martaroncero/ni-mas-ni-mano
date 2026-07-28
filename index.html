@@ -158,6 +158,15 @@
     .navbar-links.open{ display:flex; }
     .burger{ display:block; }
   }
+  .navbar-links a[aria-current="page"]{ color:#fff; border-bottom:2px solid var(--color-rosa); padding-bottom:2px; }
+
+  /* ---------- skip link ---------- */
+  .skip-link{
+    position:absolute; left:-9999px; top:0; z-index:200;
+    background:var(--color-rosa); color:#fff; padding:var(--sp-3) var(--sp-6);
+    border-radius:0 0 var(--r-md) 0; font-weight:var(--weight-semibold); font-size:var(--size-sm);
+  }
+  .skip-link:focus{ left:0; }
 
   /* ---------- hero ---------- */
   .hero-dark{
@@ -205,7 +214,7 @@
   .ref-card{ background:#fff; border-radius:var(--r-lg); padding:var(--sp-6); text-align:center; box-shadow:var(--shadow-sm); }
   .ref-avatar{ width:72px; height:72px; border-radius:50%; margin:0 auto var(--sp-4); background:linear-gradient(135deg,var(--color-rosa-light),var(--color-verde)); display:flex; align-items:center; justify-content:center; font-size:20px; }
   .ref-card h4{ font-family:var(--font-display); font-size:var(--size-sm); color:var(--color-negro); margin:0 0 4px; }
-  .ref-card p{ font-size:12.5px; opacity:.6; margin:0; }
+  .ref-card p{ font-size:12.5px; opacity:.75; margin:0; }
   .ref-note{ margin-top:var(--sp-8); text-align:center; font-size:var(--size-sm); opacity:.75; }
   .ref-note a{ color:var(--color-rosa-dark); font-weight:var(--weight-semibold); }
 
@@ -262,7 +271,8 @@
   /* ---------- extremidades ---------- */
   .accordion{ max-width:760px; }
   .acc-item{ border-bottom:1.5px solid var(--color-gris-200); padding:var(--sp-6) 0; }
-  .acc-head{ display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-family:var(--font-display); font-size:var(--size-lg); color:var(--color-granate); }
+  .acc-head{ display:flex; align-items:center; justify-content:space-between; width:100%; background:none; border:none; padding:0; text-align:left; cursor:pointer; font-family:var(--font-display); font-size:var(--size-lg); color:var(--color-granate); }
+  .acc-head:focus-visible{ outline:3px solid var(--color-granate); outline-offset:3px; }
   .acc-head .icon{ width:28px; height:28px; border-radius:50%; background:rgba(255,138,229,.15); color:var(--color-rosa-dark); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; transition:transform .25s ease; }
   .acc-item.open .acc-head .icon{ transform:rotate(45deg); }
   .acc-body{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
@@ -283,11 +293,11 @@
   }
   .mini-form textarea:focus{ border-color:var(--color-rosa); }
 
-  footer{ background:#fff; color:rgba(36,36,36,.6); padding:var(--sp-12) 0 var(--sp-8); border-top:1px solid var(--color-gris-100); }
+  footer{ background:#fff; color:rgba(36,36,36,.7); padding:var(--sp-12) 0 var(--sp-8); border-top:1px solid var(--color-gris-100); }
   .footer-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--sp-6); padding-bottom:var(--sp-8); border-bottom:1px solid var(--color-gris-100); }
   .footer-links{ display:flex; gap:var(--sp-6); flex-wrap:wrap; list-style:none; padding:0; margin:0; }
   .footer-links a{ color:var(--color-negro); opacity:.7; font-size:var(--size-sm); }
-  .footer-bottom{ display:flex; justify-content:space-between; padding-top:var(--sp-5); font-size:12.5px; opacity:.55; flex-wrap:wrap; gap:var(--sp-2); }
+  .footer-bottom{ display:flex; justify-content:space-between; padding-top:var(--sp-5); font-size:12.5px; flex-wrap:wrap; gap:var(--sp-2); }
 
   [data-reveal]{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
   [data-reveal].in{ opacity:1; transform:none; }
@@ -305,6 +315,8 @@
 </head>
 <body>
 
+<a href="#inicio" class="skip-link">Saltar al contenido</a>
+
 <!-- ================= NAV ================= -->
 <header>
   <div class="navbar">
@@ -314,27 +326,28 @@
     <ul class="navbar-links" id="navLinks">
       <li><a href="sobre-la-organizacion.html">Sobre la organización</a></li>
       <li><a href="eventos.html">Eventos</a></li>
+      <li><a href="extremidades-diferentes.html">Extremidades diferentes</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#unete" class="btn btn-rosa btn-sm">Únete</a>
-    <button class="burger" id="burgerBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
 <section class="hero-dark" id="inicio" style="padding-top:var(--sp-24); padding-bottom:var(--sp-24);">
   <div class="hero-graphic">
-    <svg viewBox="0 0 260 400" width="260" height="100%" fill="none" preserveAspectRatio="xMidYMid slice">
+    <svg viewBox="0 0 260 400" width="260" height="100%" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <path d="M190 15 C230 55 250 130 225 215 C200 300 120 350 110 385 L100 410 M100 410 C100 410 90 380 75 345 C55 280 5 240 5 155 C5 70 100 15 190 15" stroke="#D5DE7E" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.55"/>
       <circle cx="170" cy="250" r="88" stroke="#D5DE7E" stroke-width="12" fill="none" opacity="0.35"/>
     </svg>
   </div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="eyebrow eyebrow-light">Comunidad de personas con extremidades diferentes</span>
-      <h1 class="hero-heading">Si hay algo que nos hace <span class="verde">iguales</span> es que somos<br><span class="pink">diferentes.</span></h1>
-      <p class="hero-body">NI MÁS NI MANO es una comunidad de personas, un espacio de encuentro, un lugar en el que ser. 
-No somos menos, no somos más. Somos.</p>
+      <!-- <span class="eyebrow eyebrow-light">Asociación NI MÁS NI MANO</span> -->
+      <h1 class="hero-heading">Si hay algo que nos hace <span class="verde">iguales</span> es que somos<br><span class="pink">diferentes</span></h1>
+      <p class="hero-body" style="font-family:var(--font-display); font-size:var(--size-lg); opacity:1; margin-top:var(--sp-5); margin-bottom:0;">No somos menos. No somos más. Somos.</p>
+      <p class="hero-body">Comunidad de personas con extremidades diferentes. NI MÁS NI MANO es una comunidad de personas, un espacio de encuentro, un lugar en el que ser.</p>
       <div class="hero-actions">
         <a href="#unete" class="btn btn-rosa btn-lg">Únete</a>
       </div>
@@ -373,24 +386,34 @@ No somos menos, no somos más. Somos.</p>
       <span class="eyebrow">Qué hacemos</span>
       <h2>¿Qué hacemos?</h2>
     </div>
-    <div class="grid g2">
+    <div class="grid g3">
       <div class="card pillar-card">
         <span class="badge badge-rosa">01</span>
         <h3>Comunidad</h3>
         <ul>
           <li>Red de apoyo diaria a través de grupos</li>
           <li>Encuentros en diferentes ciudades</li>
-          <li>Acompañamiento y asesoramiento a personas y familias</li>
+          <li>Acompañamiento y asesoramiento</li>
         </ul>
       </div>
       <div class="card pillar-card">
         <span class="badge badge-verde">02</span>
         <h3>Activismo</h3>
         <ul>
-          <li>Divulgación e impacto social</li>
+          <li>Divulgación</li>
+          <li>Impacto social</li>
           <li>Derechos de las personas con discapacidad</li>
           <li>Acción contra el bullying y la violencia</li>
           <li>Defensa de las niñas y mujeres con discapacidad</li>
+        </ul>
+      </div>
+      <div class="card pillar-card">
+        <span class="badge badge-rosa">03</span>
+        <h3>Apoyo</h3>
+        <ul>
+          <li>Acompañamiento a familias en el momento del diagnóstico</li>
+          <li>Orientación sobre recursos y derechos</li>
+          <li>Conexión con otras familias en tu misma situación</li>
         </ul>
       </div>
     </div>
@@ -405,17 +428,36 @@ No somos menos, no somos más. Somos.</p>
       <h2 style="font-size:clamp(26px,4vw,var(--size-3xl));">Las historias que a Regina, de niña, le habrían cambiado la vida.</h2>
       <p>Personas de nuestra comunidad, en primera persona. Esta sección se irá llenando de rostros, nombres y palabras propias.</p>
     </div>
-    <div class="grid g4">
-      <div class="ref-card"><div class="ref-avatar">✨</div><h4>Próximamente</h4><p>Tu historia puede estar aquí</p></div>
-      <div class="ref-card"><div class="ref-avatar">✨</div><h4>Próximamente</h4><p>Tu historia puede estar aquí</p></div>
-      <div class="ref-card"><div class="ref-avatar">✨</div><h4>Próximamente</h4><p>Tu historia puede estar aquí</p></div>
-      <div class="ref-card"><div class="ref-avatar">✨</div><h4>Próximamente</h4><p>Tu historia puede estar aquí</p></div>
+    <div class="grid g2">
+      <div class="ref-card">
+        <div class="ref-avatar" style="border:2px dashed var(--color-gris-200); background:var(--color-gris-100);" aria-hidden="true">🖼️</div>
+        <p style="font-size:var(--size-sm); opacity:.85; line-height:var(--lh-normal); font-style:italic;">"¿Porqué no tienes mano? Ella siempre dice levantando el muñón 'sí que tengo, está aquí, ¿o no la ves? Es pequeñita pero se ve.'"</p>
+        <h4 style="margin-top:var(--sp-4);">— Nidia, madre de Keyra</h4>
+      </div>
+      <div class="ref-card">
+        <div class="ref-avatar" style="border:2px dashed var(--color-gris-200); background:var(--color-gris-100);" aria-hidden="true">🖼️</div>
+        <p style="font-size:var(--size-sm); opacity:.85; line-height:var(--lh-normal); font-style:italic;">"Cuando era más pequeño pensaba que algún día mi mano crecería. Creía que solo tardaba un poco más que la otra. Pero cuando conocí y vi a otros niños como yo, entendí que mi mano era diferente, y que eso estaba bien. Dejé de sentirme raro y descubrí que no estaba solo. También aprendí que hay muchas maneras de hacer las cosas con una mano, y que todas son igual de válidas. Mi mano no me impide jugar, aprender, divertirme ni soñar en grande."</p>
+        <h4 style="margin-top:var(--sp-4);">— Mauro, 9 años</h4>
+      </div>
     </div>
-    <p class="ref-note">¿Quieres compartir la tuya? <a href="#unete">Escríbenos por aquí →</a></p>
+    <p class="ref-note">¿Quieres compartir la tuya? <a href="#unete">Escríbenos por aquí →</a> — esta sección va a seguir creciendo con más testimonios.</p>
   </div>
 </section>
 
-
+<!-- ================= PRENSA ================= -->
+<section id="prensa" data-reveal>
+  <div class="wrap">
+    <div class="section-head" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <span class="eyebrow">Prensa e impacto</span>
+      <h2>Reconocimientos</h2>
+      <p>Muy pronto vas a encontrar acá menciones de prensa y logos de colaboraciones. Estos son dos hitos que ya forman parte de nuestra historia.</p>
+    </div>
+    <div class="press-row">
+      <span class="press-chip">Premio Nacional de Juventud 2024 · Próximamente</span>
+      <span class="press-chip">080 Barcelona Fashion Week · Próximamente</span>
+    </div>
+  </div>
+</section>
 
 <!-- ================= EVENTOS ================= -->
 <section class="eventos" id="eventos" data-reveal>
@@ -427,7 +469,7 @@ No somos menos, no somos más. Somos.</p>
     <div class="grid g3">
       <div class="event-card">
         <div class="event-card-img" style="background:var(--color-granate);">
-          <svg viewBox="0 0 240 150" width="240" height="150" fill="none">
+          <svg viewBox="0 0 240 150" width="240" height="150" fill="none" aria-hidden="true">
             <rect width="240" height="150" fill="#390E0E"/>
             <path d="M40 100 Q60 40 90 100 Z" fill="#5C1A1A"/>
             <path d="M110 100 Q130 55 150 100 Z" fill="#6b2323"/>
@@ -436,15 +478,15 @@ No somos menos, no somos más. Somos.</p>
           </svg>
         </div>
         <div class="event-card-body">
-          <div class="event-card-tag">Próximo evento</div>
+          <div class="event-card-tag">Próximo encuentro</div>
           <div class="event-card-title">Valencia</div>
           <p class="event-card-desc">NI MÁS NI MANO es una comunidad de personas, un espacio de encuentro, un lugar en el que ser.</p>
-          <span class="badge badge-verde">Fecha por confirmar</span>
+          <span class="badge badge-verde">Próximamente (junio/julio)</span>
         </div>
       </div>
       <div class="event-card">
         <div class="event-card-img" style="background:var(--color-verde-light);">
-          <svg viewBox="0 0 240 150" width="240" height="150" fill="none">
+          <svg viewBox="0 0 240 150" width="240" height="150" fill="none" aria-hidden="true">
             <rect width="240" height="150" fill="#EBF0B2"/>
             <circle cx="120" cy="65" r="35" stroke="#390E0E" stroke-width="7" fill="none"/>
             <path d="M75 130 Q120 100 165 130" stroke="#390E0E" stroke-width="7" stroke-linecap="round" fill="none"/>
@@ -459,7 +501,7 @@ No somos menos, no somos más. Somos.</p>
       </div>
       <div class="event-card">
         <div class="event-card-img" style="background:var(--color-negro);">
-          <svg viewBox="0 0 240 150" width="240" height="150" fill="none">
+          <svg viewBox="0 0 240 150" width="240" height="150" fill="none" aria-hidden="true">
             <rect width="240" height="150" fill="#1a1a1a"/>
             <rect x="75" y="35" width="90" height="80" rx="10" stroke="#FF8AE5" stroke-width="7" fill="none"/>
             <line x1="95" y1="75" x2="145" y2="75" stroke="#FF8AE5" stroke-width="5" stroke-linecap="round"/>
@@ -488,7 +530,7 @@ No somos menos, no somos más. Somos.</p>
         <div class="unete-copy">
           <span class="eyebrow eyebrow-light">Únete a la comunidad</span>
           <h2 style="color:#fff; font-size:clamp(26px,4vw,var(--size-3xl));">El corazón de NI MÁS NI MANO.</h2>
-          <p>Si quieres formar parte de NI MÁS NI MANO, cuéntanos quién eres. Solo te llevará un minuto.</p>
+          <p>Si quieres formar parte de NI MÁS NI MANO, solo tienes que rellenar este formulario.</p>
           <p style="margin-top:var(--sp-6); font-size:12.5px; opacity:.6;">Somos una asociación sin ánimo de lucro. Rellenar este formulario no implica ningún compromiso económico.</p>
         </div>
 
@@ -496,17 +538,21 @@ No somos menos, no somos más. Somos.</p>
           <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
           <p class="step-label" id="stepLabel">Paso 1 de 2 · Tus datos</p>
 
-          <form id="joinForm">
+          <!-- Reemplazá esta URL por tu endpoint real de Formspree (https://formspree.io/f/TU_FORM_ID) -->
+          <form id="joinForm" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="Nueva solicitud de alta — NI MÁS NI MANO">
+
             <div class="form-step active" id="step1">
               <div class="field-row">
-                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="nombre">Nombre</label><input class="form-input" type="text" id="nombre" required></div>
-                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="apellidos">Apellidos</label><input class="form-input" type="text" id="apellidos" required></div>
+                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="nombre">Nombre</label><input class="form-input" type="text" id="nombre" name="nombre" required></div>
+                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="apellidos">Apellidos</label><input class="form-input" type="text" id="apellidos" name="apellidos" required></div>
               </div>
               <div class="field-row">
-                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="email">Email</label><input class="form-input" type="email" id="email" required></div>
-                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="telefono">Teléfono</label><input class="form-input" type="tel" id="telefono"></div>
+                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="email">Email</label><input class="form-input" type="email" id="email" name="email" required></div>
+                <div class="form-group" style="margin-bottom:0;"><label class="form-label" for="telefono">Teléfono</label><input class="form-input" type="tel" id="telefono" name="telefono"></div>
               </div>
-              <div class="form-group"><label class="form-label" for="ciudad">Ciudad</label><input class="form-input" type="text" id="ciudad" required></div>
+              <div class="form-group"><label class="form-label" for="ciudad">Ciudad</label><input class="form-input" type="text" id="ciudad" name="ciudad" required></div>
               <div class="form-actions" style="justify-content:flex-end;">
                 <button type="button" class="btn btn-rosa btn-md" id="toStep2">Siguiente →</button>
               </div>
@@ -514,22 +560,20 @@ No somos menos, no somos más. Somos.</p>
 
             <div class="form-step" id="step2">
               <div class="form-group">
-                <label class="form-label">Marca la opción con la que te identifiques</label>
+                <label class="form-label">¿Cuál es tu relación con la asociación?</label>
                 <div class="option-list">
-                  <label class="option"><input type="radio" name="perfil" required> Soy una persona con una extremidad diferente</label>
-                  <label class="option"><input type="radio" name="perfil"> Soy familiar de una persona con una extremidad diferente</label>
-                  <label class="option"><input type="radio" name="perfil"> Soy una persona con otra condición de discapacidad</label>
-                  <label class="option"><input type="radio" name="perfil"> No soy una persona con discapacidad</label>
+                  <label class="option"><input type="radio" name="relacion" value="Tengo una extremidad diferente" required> Tengo una extremidad diferente</label>
+                  <label class="option"><input type="radio" name="relacion" value="Soy familiar de alguien con una extremidad diferente"> Soy familiar de alguien con una extremidad diferente</label>
+                  <label class="option"><input type="radio" name="relacion" value="Tengo otra condición de discapacidad"> Tengo otra condición de discapacidad</label>
+                  <label class="option"><input type="radio" name="relacion" value="Quiero sumarme para apoyar (sin relación directa)"> Quiero sumarme para apoyar (sin relación directa)</label>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">¿Por qué quieres formar parte de NI MÁS NI MANO?</label>
-                <div class="option-list">
-                  <label class="option"><input type="radio" name="motivo" required> Soy parte de la comunidad de personas con extremidades diferentes</label>
-                  <label class="option"><input type="radio" name="motivo"> Soy familiar de una persona con extremidades diferentes</label>
-                  <label class="option"><input type="radio" name="motivo"> Quiero sumarme para apoyar</label>
-                </div>
-              </div>
+
+              <label class="option" style="margin-bottom:var(--sp-4);">
+                <input type="checkbox" id="joinConsent" name="consentimiento" required>
+                Acepto que mis datos se usen para gestionar mi contacto con la asociación.
+              </label>
+
               <div class="form-actions">
                 <button type="button" class="btn btn-outline btn-md" id="toStep1">← Atrás</button>
                 <button type="submit" class="btn btn-rosa btn-md">Unirme a la comunidad</button>
@@ -540,21 +584,21 @@ No somos menos, no somos más. Somos.</p>
           <div class="thankyou" id="thankyou">
             <div class="check">💗</div>
             <h3 style="font-size:var(--size-xl); margin:var(--sp-2) 0; color:var(--color-granate);">¡Bienvenida/o!</h3>
-            <p style="font-size:var(--size-sm); opacity:.7; margin:0;">Ya formas parte de NI MÁS NI MANO. Te escribiremos muy pronto.</p>
+            <p id="thankyouText" style="font-size:var(--size-sm); opacity:.7; margin:0;"></p>
           </div>
         </div>
       </div>
 
       <div class="donate-strip">
-        <p>¿Quieres ayudarnos a gestionar encuentros, proyectos y acciones? Puedes colaborar económicamente, aparte de tu alta en la comunidad.</p>
-        <a href="#contacto" class="btn btn-outline-light btn-sm">Colabora económicamente</a>
+        <p><b style="display:block; font-family:var(--font-display); font-size:var(--size-md); color:#fff; margin-bottom:var(--sp-1);">¿Quieres ayudarnos a seguir creciendo?</b>NI MÁS NI MANO es una asociación sin ánimo de lucro. Tu aporte económico nos ayuda a organizar encuentros y sostener nuestros proyectos.</p>
+        <a href="#donar" class="btn btn-outline-light btn-sm">Colaborar</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= CONTACTO ================= -->
-<section class="contacto" id="contacto" data-reveal>
+<!-- <section class="contacto" id="contacto" data-reveal>
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Contacto</span>
@@ -584,7 +628,7 @@ No somos menos, no somos más. Somos.</p>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ================= FOOTER ================= -->
 <footer>
@@ -609,8 +653,16 @@ No somos menos, no somos más. Somos.</p>
 <script>
   const burger = document.getElementById('burgerBtn');
   const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  burger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    burger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Abrir menú');
+  }));
 
   const revealEls = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries) => {
@@ -622,8 +674,11 @@ No somos menos, no somos más. Somos.</p>
     head.addEventListener('click', () => {
       const item = head.parentElement;
       const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
-      if(!wasOpen) item.classList.add('open');
+      document.querySelectorAll('.acc-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.acc-head').setAttribute('aria-expanded', 'false');
+      });
+      if(!wasOpen){ item.classList.add('open'); head.setAttribute('aria-expanded', 'true'); }
     });
   });
 
@@ -650,12 +705,41 @@ No somos menos, no somos más. Somos.</p>
     progressFill.style.width = '50%';
     stepLabel.textContent = 'Paso 1 de 2 · Tus datos';
   });
-  joinForm.addEventListener('submit', (e) => {
+  // Reemplazá este link por el de tu formulario de Google real
+  const GOOGLE_FORM_LINK = 'PEGAR_AQUI_EL_LINK_DEL_GOOGLE_FORM';
+  const thankyouText = document.getElementById('thankyouText');
+
+  joinForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    joinForm.style.display = 'none';
-    document.querySelector('.progress-track').style.display = 'none';
-    stepLabel.style.display = 'none';
-    thankyou.classList.add('active');
+    const submitBtn = joinForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    const formData = new FormData(joinForm);
+    const relacion = formData.get('relacion');
+
+    try {
+      const response = await fetch(joinForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!response.ok) throw new Error('Formspree respondió con un error');
+
+      const quiereFormularioDetallado = relacion === 'Tengo una extremidad diferente' || relacion === 'Soy familiar de alguien con una extremidad diferente';
+      thankyouText.innerHTML = quiereFormularioDetallado
+        ? `Ya formas parte de NI MÁS NI MANO. Si querés contarnos un poco más sobre tu situación, completá también <a href="${GOOGLE_FORM_LINK}" target="_blank" rel="noopener" style="color:var(--color-rosa-dark); font-weight:600;">este formulario</a>.`
+        : 'Ya formas parte de NI MÁS NI MANO. Te escribiremos muy pronto.';
+
+      joinForm.style.display = 'none';
+      document.querySelector('.progress-track').style.display = 'none';
+      stepLabel.style.display = 'none';
+      thankyou.classList.add('active');
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Unirme a la comunidad';
+      alert('Hubo un problema al enviar el formulario. Probá de nuevo o escribinos directamente a nimasnimano@gmail.com.');
+    }
   });
 </script>
 </body>
