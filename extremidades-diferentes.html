@@ -356,7 +356,7 @@
 <!-- ================= QUE SON ================= -->
 <section class="quienes" data-reveal>
   <div class="wrap" style="max-width:760px;">
-    <h2 style="color:var(--color-rosa-dark); font-size:clamp(26px,3.6vw,var(--size-3xl)); margin-bottom:var(--sp-5);">¿Qué son las extremidades diferentes?</h2>
+    <!-- <h2 style="color:var(--color-rosa-dark); font-size:clamp(26px,3.6vw,var(--size-3xl)); margin-bottom:var(--sp-5);">¿Qué son las extremidades diferentes?</h2> -->
     <p style="font-size:var(--size-md); opacity:.8; line-height:var(--lh-loose);">"Extremidades diferentes" es el término que se utiliza para dar nombre a las diferentes condiciones que, como personas con discapacidad, tenemos en relación a nuestras extremidades. Cuando hablamos de extremidades diferentes no diferenciamos un diagnóstico, sino que reunimos ante esta terminología las muchas formas de extremidades que se dan, de muchas maneras, y que se acogen ante esta palabra con el propósito de aportar unión y comunidad.</p>
     <p style="font-size:var(--size-md); opacity:.8; margin-top:var(--sp-5); line-height:var(--lh-loose);">Podemos hablar de personas amputadas o con malformaciones congénitas, en las extremidades superiores o en las inferiores, con prótesis o sin ellas, y aunque no haya dos realidades iguales todas van unidas por algo que nadie más comparte, y el término "extremidades diferentes" recoge todas las vivencias para dar sentido y pertenencia, colectivizando a una gran comunidad de personas dentro de la discapacidad.</p>
   </div>
@@ -368,38 +368,6 @@
     <h2 style="color:var(--color-rosa-dark); font-size:clamp(26px,3.6vw,var(--size-3xl)); margin-bottom:var(--sp-5);">¿Qué es la agenesia?</h2>
     <p style="font-size:var(--size-md); opacity:.8; line-height:var(--lh-loose);">La agenesia es conocida como la "ausencia" de un órgano o parte de él, una malformación de origen congénito. También se define como "desarrollo defectuoso". Hablando de extremidades diferentes, la agenesia se presenta cuando no se ha terminado de formar una extremidad o parte de ella, por ejemplo: la mano. Este es el caso más común.</p>
     <p style="font-size:var(--size-md); opacity:.8; margin-top:var(--sp-5); line-height:var(--lh-loose);">Definir como ausente algo que solo es diferente no es real. Hay muchas manos muy distintas, de muchas formas, de diferentes maneras. Dentro de las extremidades diferentes no solo está la agenesia — sindactilia, braquidactilia… — hay muchas condiciones, todas igual de válidas.</p>
-  </div>
-</section>
-
-<!-- ================= GLOSARIO ================= -->
-<section data-reveal>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Glosario</span>
-      <h2>Algunos términos, explicados con naturalidad</h2>
-    </div>
-    <div class="accordion">
-      <div class="acc-item open">
-        <button class="acc-head" type="button" aria-expanded="true" aria-controls="acc-body-1"><span>Agenesia</span><span class="icon" aria-hidden="true">+</span></button>
-        <div class="acc-body" id="acc-body-1"><p>Ausencia congénita, total o parcial, del desarrollo de una extremidad o parte de ella. No es una "falta": es una forma de cuerpo con la que se nace, presente desde el desarrollo prenatal.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-2"><span>Diferencia de extremidad</span><span class="icon" aria-hidden="true">+</span></button>
-        <div class="acc-body" id="acc-body-2"><p>Término paraguas que usamos para nombrar cualquier variación en la forma, tamaño o presencia de una extremidad respecto al desarrollo típico, sin partir de la idea de "falta" o "defecto".</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-3"><span>Amputación</span><span class="icon" aria-hidden="true">+</span></button>
-        <div class="acc-body" id="acc-body-3"><p>Pérdida de una extremidad o parte de ella, ya sea de nacimiento o a lo largo de la vida, por causas médicas, accidentes u otras circunstancias.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-4"><span>Focomelia</span><span class="icon" aria-hidden="true">+</span></button>
-        <div class="acc-body" id="acc-body-4"><p>Variación congénita en la que los huesos largos de brazos o piernas están muy reducidos o ausentes, de forma que manos o pies aparecen más próximos al tronco de lo habitual.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-5"><span>Mirada anticapacitista</span><span class="icon" aria-hidden="true">+</span></button>
-        <div class="acc-body" id="acc-body-5"><p>Una forma de mirar la discapacidad que no la sitúa por debajo de lo "normal", sino como una variación más de lo humano — cuestionando los prejuicios y barreras sociales antes que el propio cuerpo.</p></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -451,18 +419,6 @@
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12});
   revealEls.forEach(el => io.observe(el));
-
-  document.querySelectorAll('.acc-head').forEach(head => {
-    head.addEventListener('click', () => {
-      const item = head.parentElement;
-      const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.acc-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.acc-head').setAttribute('aria-expanded', 'false');
-      });
-      if(!wasOpen){ item.classList.add('open'); head.setAttribute('aria-expanded', 'true'); }
-    });
-  });
 </script>
 </body>
 </html>
