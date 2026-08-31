@@ -225,6 +225,9 @@
   .milestone p{ opacity:.9; font-size:var(--size-sm); margin-top:var(--sp-2); }
   .press-row{ display:flex; gap:var(--sp-4); flex-wrap:wrap; justify-content:center; margin-top:var(--sp-8); }
   .press-chip{ font-size:var(--size-xs); font-weight:var(--weight-semibold); color:var(--color-negro); opacity:.5; background:var(--color-gris-100); padding:var(--sp-2) var(--sp-5); border-radius:var(--r-full); }
+  .press-card{ text-align:center; }
+  .press-icon{ font-size:32px; margin-bottom:var(--sp-4); }
+  .press-card h3{ font-family:var(--font-display); font-size:var(--size-lg); margin-bottom:var(--sp-4); }
 
   /* ---------- event card ---------- */
   .eventos{ background:var(--color-blanco); }
@@ -330,7 +333,7 @@
       <li><a href="sobre-la-organizacion.html">Sobre la organización</a></li>
       <li><a href="eventos.html">Eventos</a></li>
       <li><a href="extremidades-diferentes.html">Extremidades diferentes</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#unete">Contacto</a></li>
     </ul>
     <a href="#unete" class="btn btn-rosa btn-sm">Únete</a>
     <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -451,11 +454,18 @@
     <div class="section-head" style="text-align:center; margin-left:auto; margin-right:auto;">
       <span class="eyebrow">Prensa e impacto</span>
       <h2>Reconocimientos</h2>
-      <p>texto</p>
     </div>
-    <div class="press-row">
-      <span class="press-chip">Premio Nacional de Juventud 2024 · Próximamente</span>
-      <span class="press-chip">080 Barcelona Fashion Week · Próximamente</span>
+    <div class="grid g2" style="max-width:760px; margin:0 auto;">
+      <div class="card press-card">
+        <div class="press-icon">🏆</div>
+        <h3>Premio Nacional de Juventud 2024</h3>
+        <span class="badge badge-verde">Próximamente</span>
+      </div>
+      <div class="card press-card">
+        <div class="press-icon">🏆</div>
+        <h3>080 Barcelona Fashion Week</h3>
+        <span class="badge badge-verde">Próximamente</span>
+      </div>
     </div>
   </div>
 </section>
@@ -599,10 +609,10 @@
         </div>
       </div>
 
-      <div class="donate-strip">
+      <!-- <div class="donate-strip">
         <p><b style="display:block; font-family:var(--font-display); font-size:var(--size-md); color:#fff; margin-bottom:var(--sp-1);">¿Quieres ayudarnos a seguir creciendo?</b>NI MÁS NI MANO es una asociación sin ánimo de lucro. Tu aporte económico nos ayuda a organizar encuentros y sostener nuestros proyectos.</p>
         <a href="#donar" class="btn btn-outline-light btn-sm">Colaborar</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -650,7 +660,7 @@
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="extremidades-diferentes.html">Extremidades diferentes</a></li>
         <li><a href="#unete">Únete</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#unete">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
